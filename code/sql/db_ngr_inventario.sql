@@ -90,8 +90,8 @@ CREATE TABLE IF NOT EXISTS `db_ngr_inventario`.`Usuario` (
   `fk_id_TipoDocumento` INT(10) NOT NULL COMMENT 'Clave Foránea del Tipo de Documento del usuario.',
   `usuarioNombre` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Nombre Completo del usuario.\nEs usado para ingresar al sistema y procesos de registro.',
   `usuarioPswrd` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Contraseña del usuario.\nPermite el acceso de los usuarios autorizados para hacer uso del sistema, como parte del proceso de validación de los mismos.',
+  `usuarioCodigoVerif` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Clave de Verificación.\nPermite la recuperación de la contraseña en caso de que el usuario requiera recuperarla',
   `usuarioCorreoElectronico` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Se utiliza para el proceso de recuperación de cuenta de los usuarios.',
-  `usuarioTelefono` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Telefono celular del usuario.\nSe utiliza como alternativa para recuperar la cuenta del usuario en caso de que este pierda el acceso a la misma.\nPuede ser omitido su registro.  Si el usuario omite su registro se diligencia con \"N/A\" (No Aplica).',
   `usuarioFechaRegistro` DATETIME NOT NULL COMMENT 'Se utilliza para el proceso de verificación del historial de registros de usuarios.',
   `fk_id_EstadoUsuario` INT(10) NOT NULL COMMENT 'Clave foránea del Estado de Actividad del usuario.\nLos usuarios poseerán un estado, ya que podrán ser inhabilitados por un usuario Superadministrador para procesos internos.',
   `fk_id_UsuarioPermitido` INT(10) NOT NULL COMMENT 'Clave foránea del permiso para ser registrado externamente.',
@@ -157,9 +157,14 @@ CREATE TABLE IF NOT EXISTS `db_ngr_inventario`.`Producto` (
   `productoFechaRegistro` DATETIME NOT NULL COMMENT 'Fecha de Registro del Producto.',
   `fk_id_Categoria` INT(10) NOT NULL COMMENT 'Clave Foránea de la Categoría a la que pertenence el Producto.',
   `productoDescripcion` VARCHAR(400) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Descripción del producto.\nUna breve descripción del producto sobre su color, estilo, tamaño, material principal,etc.\nPuede ser omitido su registro.  Si el usuario omite su registro se diligencia con \"N/A\" (No Aplica).',
+  `fk_id_ProveedorMaterial` INT(10) NOT NULL COMMENT 'Clave foránea del Identificador del Proveedor del Material para efectos de la realización de informes de Inventariado en Stock.',
   PRIMARY KEY (`id_Producto`),
     FOREIGN KEY (`fk_id_Categoria`)
     REFERENCES `db_ngr_inventario`.`Categoria` (`id_Categoria`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+    FOREIGN KEY (`fk_id_ProveedorMaterial`)
+    REFERENCES `db_ngr_inventario`.`ProveedorMaterial` (`id_ProveedorMaterial`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
