@@ -1,10 +1,17 @@
-﻿@import url('./bootstrap.min.css');
+@import url('./bootstrap3.css');
 @import url('./ripples.min.css');
 @import url('./sweetalert2.css');
 @import url('./jquery.mCustomScrollbar.css');
 @import url('./material-design-iconic-font.min.css');
 @import url('./theme.css');
+@import url('./dataTables.bootstrap.css');
+@import url('./jquery.dataTables.css');
+@import url('./responsive.bootstrap.css');
+@import url('./select.bootstrap.css');
+@import url('./buttons.bootstrap.css');
+@import url('./buttons.dataTables.css');
 
+/* Fuentes */
 @font-face {
     font-family: 'RobotoCondensedLight';
     src: url('../fonts/robotocondensed-light.eot');
@@ -43,6 +50,7 @@ body, html{
 	margin: 0;
 	width: 100%;
 	box-sizing: border-box;
+	z-index: 100;
 }
 .cover{
 	background: 50% 50% no-repeat;
@@ -57,38 +65,6 @@ body, html{
 	border-bottom: 2px solid #F7F7F7;
 	padding: 0;
 }
-/* Inicio de Sesión */
-.login-container{
-	height: 100%;
-	background-image: url('../img/fondos/gradient.jpg');
-}
-.logInForm{
-	position: absolute;
-	color: #fff;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 100%;
-	max-width: 350px;
-	min-height: 350px;
-	padding: 15px;
-	border: 1px solid rgba(255,255,255,.3);
-	border-radius: 4px;
-}
-/* descartado */
-.logInReg{
-	position: absolute;
-	color: #fff;
-	top: 100%;
-	left: 50%;
-	transform: translate(-50%, 15%);
-	width: 100%;
-	max-width: 300px;	
-}
-.logInForm p,
-.logInForm label{
-	color: #FFF;
-}
 /* Partes del dashboard*/
 .dashboard-sideBar,
 .dashboard-contentPage{
@@ -102,13 +78,7 @@ body, html{
 .dashboard-sideBar-ct{
 	width: 270px;
 }
-.dashboard-sideBar{
-	left: 0;
-	z-index: 2;
-	background-image: url('../img/fondos/gradient.jpg');
-	border-right: 1px solid rgba(255, 255, 255, .7);
-	overflow: hidden;
-}
+
 .dashboard-sideBar-ct{
 	position: relative;
 	height: 100%;
@@ -236,6 +206,8 @@ body, html{
 .dashboard-Navbar{
 	background-color: #2A2D34;
 	overflow: hidden;
+	clear:both;
+	float:left;
 }
 .dashboard-Navbar > ul >li,
 .dashboard-Navbar > ul > li > a{
@@ -322,51 +294,55 @@ body, html{
 .tile-number > small{
 	font-size: 17px;
 }
-
+/* sideBar */
+.dashboard-sideBar{
+	width: 100%;
+	z-index: 99;
+	background-image: none;
+	background-color: transparent;
+	border-right: none;
+	opacity: 0;
+	pointer-events: none;
+	overflow: hidden;
+}
+.dashboard-sideBar-ct,
+.dashboard-sideBar-bg{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.dashboard-sideBar-ct{
+	background-color: #2A2D34;
+	/*background-image: url('../img/fondos/black.jpg');*/
+	border-right: 1px solid rgba(255, 255, 255, .3);
+	z-index: 3;
+	max-width: 270px;
+	width: 100%;
+	transition: all .3s ease-in-out;
+	transform: translateX(-270px);
+}
+.dashboard-sideBar-bg{
+	height: 100%;
+	background-color: rgba(0, 0, 0, .6);
+	z-index: 2;
+}
+.dashboard-contentPage{
+	padding-left: 0;
+}
+.show-sidebar{
+	pointer-events: auto !important;
+	opacity: 1 !important;
+}
+.show-sidebar > .dashboard-sideBar-ct{
+	transform: translateX(0) !important;
+}
 /* MEDIA QUERY */
 @media (max-width: 767px){
 	.dashboard-sideBar{
-		width: 100%;
-		z-index: 99;
-		background-image: none;
-		background-color: transparent;
-		border-right: none;
-		opacity: 0;
-		pointer-events: none;
 		overflow: hidden;
 	}
-	.dashboard-sideBar-ct,
-	.dashboard-sideBar-bg{
-		position: absolute;
-		top: 0;
-		left: 0;
-	}
-	.dashboard-sideBar-ct{
-		background-color: #2A2D34;
-		border-right: 1px solid rgba(255, 255, 255, .3);
-		z-index: 3;
-		max-width: 270px;
-		width: 100%;
-		transition: all .3s ease-in-out;
-		transform: translateX(-270px);
-	}
-	.dashboard-sideBar-bg{
-		height: 100%;
-		background-color: rgba(0, 0, 0, .6);
-		z-index: 2;
-	}
-	.dashboard-contentPage{
-		padding-left: 0;
-	}
-	.show-sidebar{
-		pointer-events: auto !important;
-		opacity: 1 !important;
-	}
-	.show-sidebar > .dashboard-sideBar-ct{
-		transform: translateX(0) !important;
-	}
 }
-@media (min-width: 768px) and (max-width: 991px){
+@media (max-width: 768px) and (max-width: 991px){
 	.hide-sidebar{
 		pointer-events: none;
 		opacity: 0;
@@ -377,6 +353,7 @@ body, html{
 		padding-left: 0;
 	}
 }
+
 @media (min-width: 992px) and (max-width: 1199px){
 	.hide-sidebar{
 		pointer-events: none;
@@ -414,4 +391,19 @@ body, html{
 .fijar {
 	position: fixed; 
 	top: 0;
+	clear:both;
+	float:left;
+	position: fixed;
+	/*z-index: 100;*/
+}
+
+.circulo{
+	border-radius: 50%;
+}
+
+.footer{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
