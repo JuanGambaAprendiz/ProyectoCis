@@ -1,7 +1,7 @@
 <?php 
 	session_start();
-	$_SESSION["usuario"]='0';
-	$_SESSION["admin"]='0';
-	$_SESSION["superadmin"]='0';
+	$_SESSION["rol"]=0;
+	unset($_SESSION["rol"]);
+	session_destroy();
 	header("location:pre_iniciarSesion.php");
  ?>
