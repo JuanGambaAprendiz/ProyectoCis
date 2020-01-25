@@ -184,3 +184,4 @@ CREATE TABLE IF NOT EXISTS `Stock` (
     FOREIGN KEY (`fk_id_EstadoProducto`)
     REFERENCES `EstadoProducto` (`id_EstadoProducto`)
     );
+
