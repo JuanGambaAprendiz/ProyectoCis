@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
   `usuarioDocumento` INT(20) NOT NULL COMMENT 'Documento del usuario que desea ingresar al sistema.\nSe utiliza el documento de identidad del usuario como requisito para el proceso de validación de su ingreso al sistema.',
   `fk_id_TipoDocumento` INT(10) NOT NULL COMMENT 'Clave Foránea del Tipo de Documento del usuario.',
   `usuarioNombre` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Nombre Completo del usuario.\nEs usado para ingresar al sistema y procesos de registro.',
-  `usuarioPswrd` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Contraseña del usuario.\nPermite el acceso de los usuarios autorizados para hacer uso del sistema, como parte del proceso de validación de los mismos.',
+  `usuarioPswrd` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Contraseña del usuario.\nPermite el acceso de los usuarios autorizados para hacer uso del sistema, como parte del proceso de validación de los mismos.',
   `usuarioCodigoVerif` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Clave de Verificación.\nPermite la recuperación de la contraseña en caso de que el usuario requiera recuperarla',
   `usuarioCorreoElectronico` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Se utiliza para el proceso de recuperación de cuenta de los usuarios.',
   `usuarioFechaRegistro` DATETIME NOT NULL COMMENT 'Se utilliza para el proceso de verificación del historial de registros de usuarios.',
@@ -157,14 +157,9 @@ CREATE TABLE IF NOT EXISTS `Producto` (
   `fk_id_ProveedorMaterial` INT(10) NOT NULL COMMENT 'Clave foránea del Identificador del Proveedor del Material para efectos de la realización de informes de Inventariado en Stock.',
   PRIMARY KEY (`id_Producto`),
   INDEX `fk_id_Categoria_idx` (`fk_id_Categoria`),
-  INDEX `fk_id_ProveedorMaterial_idx` (`fk_id_ProveedorMaterial`),
   CONSTRAINT `fk_id_Categoria`
     FOREIGN KEY (`fk_id_Categoria`)
-    REFERENCES `Categoria` (`id_Categoria`),
-  CONSTRAINT `fk_id_ProveedorMaterial`
-    FOREIGN KEY (`fk_id_ProveedorMaterial`)
-    REFERENCES `ProveedorMaterial` (`id_ProveedorMaterial`)
-
+    REFERENCES `Categoria` (`id_Categoria`)
     );
 
 
@@ -182,15 +177,11 @@ CREATE TABLE IF NOT EXISTS `Stock` (
   PRIMARY KEY (`id_Stock`),
   INDEX `fk_ProductoCodigo` (`fk_id_Producto`),
   INDEX `fk_id_EstadoProducto_idx` (`fk_id_EstadoProducto`),
-  INDEX `fk_usuarioDocumento_idx` (`fk_usuarioDocumento`),
   CONSTRAINT `fk_id_Producto`
     FOREIGN KEY (`fk_id_Producto`)
     REFERENCES `Producto` (`id_Producto`),
   CONSTRAINT `fk_id_EstadoProducto`
     FOREIGN KEY (`fk_id_EstadoProducto`)
-    REFERENCES `EstadoProducto` (`id_EstadoProducto`),
-  CONSTRAINT `fk_usuarioDocumento`
-    FOREIGN KEY (`fk_usuarioDocumento`)
-    REFERENCES `Usuario` (`usuarioDocumento`)
-
+    REFERENCES `EstadoProducto` (`id_EstadoProducto`)
     );
+

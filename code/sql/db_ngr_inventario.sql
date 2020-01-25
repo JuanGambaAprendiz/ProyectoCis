@@ -17,7 +17,7 @@ USE `db_ngr_inventario` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `db_ngr_inventario`.`Categoria` (
   `id_Categoria` INT(10) NOT NULL AUTO_INCREMENT COMMENT 'Identificador de los registros de las Categorías de los Productos.\nPermiten verificar si se elimina algún registro.',
-  `categoria` VARCHAR(100) NOT NULL COMMENT 'Categoría del Producto.\nPermite agrupar un conjunto de Productos que pretenecen a cierta clasificación para efectos \nde los procesos de negocio, facilidad de búsqueda de productos,etc.',
+  `categoria` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Categoría del Producto.\nPermite agrupar un conjunto de Productos que pretenecen a cierta clasificación para efectos \nde los procesos de negocio, facilidad de búsqueda de productos,etc.',
   `categoriaDescripcion` VARCHAR(400) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Una breve descripción de las características básicas o concurrentes en los Productos de dicha clasificación.\nPuede ser omitido su registro.',
   PRIMARY KEY (`id_Categoria`))
 ENGINE = InnoDB;
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `db_ngr_inventario`.`Usuario` (
   `usuarioDocumento` INT(20) NOT NULL COMMENT 'Documento del usuario que desea ingresar al sistema.\nSe utiliza el documento de identidad del usuario como requisito para el proceso de validación de su ingreso al sistema.',
   `fk_id_TipoDocumento` INT(10) NOT NULL COMMENT 'Clave Foránea del Tipo de Documento del usuario.',
   `usuarioNombre` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Nombre Completo del usuario.\nEs usado para ingresar al sistema y procesos de registro.',
-  `usuarioPswrd` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Contraseña del usuario.\nPermite el acceso de los usuarios autorizados para hacer uso del sistema, como parte del proceso de validación de los mismos.',
+  `usuarioPswrd` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Contraseña del usuario.\nPermite el acceso de los usuarios autorizados para hacer uso del sistema, como parte del proceso de validación de los mismos.',
   `usuarioCodigoVerif` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Clave de Verificación.\nPermite la recuperación de la contraseña en caso de que el usuario requiera recuperarla',
   `usuarioCorreoElectronico` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Se utiliza para el proceso de recuperación de cuenta de los usuarios.',
   `usuarioFechaRegistro` DATETIME NOT NULL COMMENT 'Se utilliza para el proceso de verificación del historial de registros de usuarios.',
@@ -98,16 +98,13 @@ CREATE TABLE IF NOT EXISTS `db_ngr_inventario`.`Usuario` (
   PRIMARY KEY (`usuarioDocumento`),
     FOREIGN KEY (`fk_id_TipoDocumento`)
     REFERENCES `db_ngr_inventario`.`TipoDocumento` (`id_TipoDocumento`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE NO ACTION,
     FOREIGN KEY (`fk_id_EstadoUsuario`)
     REFERENCES `db_ngr_inventario`.`EstadoUsuario` (`id_EstadoUsuario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE NO ACTION,
     FOREIGN KEY (`fk_id_UsuarioPermitido`)
     REFERENCES `db_ngr_inventario`.`UsuarioPermitido`(`id_UsuarioPermitido`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -121,12 +118,10 @@ CREATE TABLE IF NOT EXISTS `db_ngr_inventario`.`Permiso` (
   PRIMARY KEY (`id_Permiso`),
     FOREIGN KEY (`fk_id_Rol`)
     REFERENCES `db_ngr_inventario`.`Rol` (`id_Rol`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE NO ACTION,
     FOREIGN KEY (`fk_usuarioDocumento`)
     REFERENCES `db_ngr_inventario`.`Usuario` (`usuarioDocumento`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -142,15 +137,14 @@ CREATE TABLE IF NOT EXISTS `db_ngr_inventario`.`ProveedorMaterial` (
   PRIMARY KEY (`id_ProveedorMaterial`),
     FOREIGN KEY (`fk_id_estadoProveedor`)
     REFERENCES `db_ngr_inventario`.`EstadoProveedor` (`id_EstadoProveedor`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `db_ngr_inventario`.`Producto`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `db_ngr_inventario`.`Producto` (
+CREATE TABLE IF NOT EXISTS `Producto` (
   `id_Producto` INT(10) NOT NULL AUTO_INCREMENT COMMENT 'Identificador del Producto.\nEl Identificador del Producto permite cumplir con el requerimiento de la verificación sobre la preservación de los registros, es decir, permite observar si hubo eliminación de algún Producto del Inventario de Productos.',
   `productoNombre` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Nombre del Producto.\nPermite registrar los productos en existencia para efectos del inventariado.',
   `productoCodigo` VARCHAR(45) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Código de registro del Producto.\nPermitirá verificar la unicidad del producto dentro de los registros.',
@@ -159,21 +153,18 @@ CREATE TABLE IF NOT EXISTS `db_ngr_inventario`.`Producto` (
   `productoDescripcion` VARCHAR(400) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Descripción del producto.\nUna breve descripción del producto sobre su color, estilo, tamaño, material principal,etc.\nPuede ser omitido su registro.  Si el usuario omite su registro se diligencia con \"N/A\" (No Aplica).',
   `fk_id_ProveedorMaterial` INT(10) NOT NULL COMMENT 'Clave foránea del Identificador del Proveedor del Material para efectos de la realización de informes de Inventariado en Stock.',
   PRIMARY KEY (`id_Producto`),
+  INDEX `fk_id_Categoria_idx` (`fk_id_Categoria`),
+  CONSTRAINT `fk_id_Categoria`
     FOREIGN KEY (`fk_id_Categoria`)
-    REFERENCES `db_ngr_inventario`.`Categoria` (`id_Categoria`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-    FOREIGN KEY (`fk_id_ProveedorMaterial`)
-    REFERENCES `db_ngr_inventario`.`ProveedorMaterial` (`id_ProveedorMaterial`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `Categoria` (`id_Categoria`)
+    ON DELETE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `db_ngr_inventario`.`Stock`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `db_ngr_inventario`.`Stock` (
+CREATE TABLE IF NOT EXISTS `Stock` (
   `id_Stock` INT(10) NOT NULL AUTO_INCREMENT COMMENT 'Identificador del Registro en Stock.\nPermite verificar la eliminación de algún registro sobre la actividad de los productos en el Inventario de Stock.',
   `fk_id_Producto` INT(10) NOT NULL COMMENT 'Clave Foránea que menciona el Producto que fue objeto de cambios en su movimiento.',
   `fk_id_EstadoProducto` INT(10) NOT NULL COMMENT 'Clave Foránea del registro sobre el Estado de Movimiento del Producto en el Stock.',
@@ -182,18 +173,15 @@ CREATE TABLE IF NOT EXISTS `db_ngr_inventario`.`Stock` (
   `fk_usuarioDocumento` INT(20) NOT NULL COMMENT 'Clave Foránea del Documento del usuario que realizó el movimiento.\nSe utiliza para el proceso de verificación de la veracidad de la información en los informes',
   `stockJustificacion` VARCHAR(400) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Justificación del Movimiento realizado.\nEl usuario que registre un movimiento debe justificar el porqué del mismo, en función del proceso de negocio.',
   PRIMARY KEY (`id_Stock`),
+  INDEX `fk_ProductoCodigo` (`fk_id_Producto`),
+  INDEX `fk_id_EstadoProducto_idx` (`fk_id_EstadoProducto`),
+  CONSTRAINT `fk_id_Producto`
     FOREIGN KEY (`fk_id_Producto`)
-    REFERENCES `db_ngr_inventario`.`Producto` (`id_Producto`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    REFERENCES `Producto` (`id_Producto`),
+  CONSTRAINT `fk_id_EstadoProducto`
     FOREIGN KEY (`fk_id_EstadoProducto`)
-    REFERENCES `db_ngr_inventario`.`EstadoProducto` (`id_EstadoProducto`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-    FOREIGN KEY (`fk_usuarioDocumento`)
-    REFERENCES `db_ngr_inventario`.`Usuario` (`usuarioDocumento`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `EstadoProducto` (`id_EstadoProducto`)
+    ON DELETE NO ACTION)
 ENGINE = InnoDB;
 
 SET SQL_MODE=@OLD_SQL_MODE;
