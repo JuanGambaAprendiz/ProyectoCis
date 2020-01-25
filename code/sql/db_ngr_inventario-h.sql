@@ -157,14 +157,9 @@ CREATE TABLE IF NOT EXISTS `Producto` (
   `fk_id_ProveedorMaterial` INT(10) NOT NULL COMMENT 'Clave foránea del Identificador del Proveedor del Material para efectos de la realización de informes de Inventariado en Stock.',
   PRIMARY KEY (`id_Producto`),
   INDEX `fk_id_Categoria_idx` (`fk_id_Categoria`),
-  INDEX `fk_id_ProveedorMaterial_idx` (`fk_id_ProveedorMaterial`),
   CONSTRAINT `fk_id_Categoria`
     FOREIGN KEY (`fk_id_Categoria`)
-    REFERENCES `Categoria` (`id_Categoria`),
-  CONSTRAINT `fk_id_ProveedorMaterial`
-    FOREIGN KEY (`fk_id_ProveedorMaterial`)
-    REFERENCES `ProveedorMaterial` (`id_ProveedorMaterial`)
-
+    REFERENCES `Categoria` (`id_Categoria`)
     );
 
 
@@ -182,15 +177,10 @@ CREATE TABLE IF NOT EXISTS `Stock` (
   PRIMARY KEY (`id_Stock`),
   INDEX `fk_ProductoCodigo` (`fk_id_Producto`),
   INDEX `fk_id_EstadoProducto_idx` (`fk_id_EstadoProducto`),
-  INDEX `fk_usuarioDocumento_idx` (`fk_usuarioDocumento`),
   CONSTRAINT `fk_id_Producto`
     FOREIGN KEY (`fk_id_Producto`)
     REFERENCES `Producto` (`id_Producto`),
   CONSTRAINT `fk_id_EstadoProducto`
     FOREIGN KEY (`fk_id_EstadoProducto`)
-    REFERENCES `EstadoProducto` (`id_EstadoProducto`),
-  CONSTRAINT `fk_usuarioDocumento`
-    FOREIGN KEY (`fk_usuarioDocumento`)
-    REFERENCES `Usuario` (`usuarioDocumento`)
-
+    REFERENCES `EstadoProducto` (`id_EstadoProducto`)
     );
