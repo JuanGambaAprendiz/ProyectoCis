@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="./img/logo/favicon_ngr.ico">
     <link rel="stylesheet" href="./css/estilos.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <title>MUEBLES NGR</title>
@@ -12,7 +13,7 @@
 <!--Banner-->
     <section>
         <nav class="navbar navbar-expand-md navbar-dark px-5 py-2 fixed-top cafe-oscuro">
-            <a class="navbar-brand" href=""><h3>Muebles NGR</h3></a>
+            <a class="navbar-brand" href="#" title="Muebles NGR"><img src="./img/logo/LogoMueblesNGR1.jpg" alt="Muebles NGR" width="150" height="40"></a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#menu">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -126,7 +127,7 @@
 <!--End Section Find Us-->
 <!--Footer Section-->
 <section>
-  <footer class="page-footer font-small cafe-oscuro py-4">
+  <footer id="footer" class="page-footer font-small cafe-oscuro py-4">
     <div class="container-fluid text-center text-xs-center">
       <div class="col-md-12 mt-md-0 mt-3">
 

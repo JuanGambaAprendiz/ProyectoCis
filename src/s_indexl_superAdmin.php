@@ -8,6 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="icon" href="./img/logo/favicon_ngr.ico">
     <link rel="stylesheet" href="./css/main.css">
 	<?php 
 		include("din_headMain.php");
@@ -28,14 +29,14 @@
 			}
 		}
 		$documento=$_SESSION["documento"];
-		$sql="SELECT * FROM permiso WHERE fk_usuarioDocumento='$documento'";
+		$sql="SELECT * FROM Permiso WHERE fk_usuarioDocumento='$documento'";
 		if (!$result=$db->query($sql)){
 			die('Hay un error corriendo en la consulta o datos no encontrados!!! ['.$db->error.']');
 		}
 		while ($row=$result->fetch_assoc()){
 			$iid_Rol = $row['fk_id_Rol'];
 		}
-		$sql2="SELECT * FROM rol WHERE id_Rol='$iid_Rol'";
+		$sql2="SELECT * FROM Rol WHERE id_Rol='$iid_Rol'";
 		if (!$result2=$db->query($sql2)){
 			die('Hay un error corriendo en la consulta o datos no encontrados!!! ['.$db->error.']');
 		}
@@ -122,79 +123,103 @@
         	<?php
             	}
         	?>
-			<section id="" class="container">
-                <div class="table-responsive">
-                    <table id="example" class="table table-hover table-bordered">
-                    <caption>Lista de usuarios registrados</caption>
-                    <thead class="">
-                        <tr class="info">
-                            <th scope="col">N° Documento</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Correo</th>
-                            <th scope="col">Fecha de Registro</th>
-							<th scope="col">Estado</th>
-							<th scope="col">Permisos</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                        include("neg_conexion.php");
-                        $sql = "SELECT * FROM Usuario";
-                        if(!$result = $db->query($sql)){
-                            die('Ha ocurrido un error realizando la consulta ['. $db->error . ']');
-                        }
-                        while($row = $result->fetch_assoc()){
-                        $documento = $row['usuarioDocumento'];  
-                        $nombre = $row['usuarioNombre'];
-                        $correo = $row['usuarioCorreoElectronico'];
-                        $fecha = $row['usuarioFechaRegistro'];
-                        $fk_estado = $row['fk_id_EstadoUsuario'];
-                        $permitido = $row['fk_id_UsuarioPermitido'];
-                    
-                        //sub consulta estado usuario
-                            $sql2 = "SELECT * FROM EstadoUsuario WHERE id_EstadoUsuario='$fk_estado'";
-                            if(!$result2 = $db->query($sql2)){
-                                die('Ha ocurrido un error realizando la consulta ['. $db->error . ']');
-                            }
-                            while($row2 = $result2->fetch_assoc()){	
-                                $estado = $row2['estadoUsuario'];
-							}
-                    ?>
-                        <tr>
-                            <th scope="row"><?php echo $documento ?></th>
-                            <td><?php echo $nombre ?></td>
-                            <td><?php echo $correo ?></td>
-                            <td><?php echo $fecha ?></td>
-							<td>
-								<form class="form-inline" action="neg_cambiarEstadoUsuario.php" method="POST" id="permisos" name="permisos">
-									<div class="form-group">
-										<?php echo $estado ?>
-										<input type='hidden' name='estado' value="<?php echo $fk_estado ?>">
-										<input type="hidden" name="documento" value="<?php echo $documento ?>">
-									</div>
-									<?php
-										if($documento != $_SESSION['documento']){
-									?>
-									<button type="submit" class="btn btn-warning"><i class="zmdi zmdi-edit"></i></button>
-									<?php
-										}
-									?>
-								</form>
-							</td>
-							<td>
-								<form action="pre_permisos.php" method="POST" id="permisos" name="permisos">
-									<input type="hidden" name="documento" value="<?php echo $documento ?>">
-									<button type="submit" class="btn btn-secondary">consultar</button>
-								</form>
-							</td>
-                        </tr>
-						<?php
-                            }
-                        ?>
-                    </tbody>
-                    </table>
-                </div>
+
+			<section class="container" style="padding-bottom:3%;">
+				<div class="row">
+					<div class="col-xs-7 col-md-10">
+						<div class="btn-group" role="group" arial-label="Herarmientas">
+							<a class="btn btn-primary" href="pre_registrarUsuario_superadmin.php"
+							 title="Registrar un usuario &#13;desde el Superadministrador">+ Registrar</a>
+							<a class="btn btn-default" href="pre_usuarioPermitido_superadmin.php" title="Permisos para registrarse">Usuarios Permitidos</a>
+							<a class="btn btn-default" href="pre_roles.php" title="Roles del Sistema">Roles</a>
+							<a class="btn btn-default" href="pre_tiposDocumento.php" title="Tipos de Documento del Sistema">Tipos de Documento</a>
+						</div>
+					</div>
+				</div>
 			</section>
+			
+			<div class="panel panel-default" title="Tabla de los usuarios regístrados en el sistema">				
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table id="example" class="table table-responsive-sm table-hover table-outline mb-0">
+						<caption>Lista de usuarios registrados</caption>
+						<thead class="">
+							<tr class="info">
+								<th scope="col">N° Documento</th>
+								<th scope="col">Nombre</th>
+								<th scope="col">Correo</th>
+								<th scope="col">Fecha de Registro</th>
+								<th scope="col">Estado</th>
+								<th scope="col">Permisos</th>
+							</tr>
+						</thead>
+						<tbody>
+						<?php
+							include("neg_conexion.php");
+							$sql = "SELECT * FROM Usuario";
+							if(!$result = $db->query($sql)){
+								die('Ha ocurrido un error realizando la consulta ['. $db->error . ']');
+							}
+							while($row = $result->fetch_assoc()){
+							$documento = $row['usuarioDocumento'];  
+							$nombre = $row['usuarioNombre'];
+							$correo = $row['usuarioCorreoElectronico'];
+							$fecha = $row['usuarioFechaRegistro'];
+							$fk_estado = $row['fk_id_EstadoUsuario'];
+							$permitido = $row['fk_id_UsuarioPermitido'];
+						
+							//sub consulta estado usuario
+								$sql2 = "SELECT * FROM EstadoUsuario WHERE id_EstadoUsuario='$fk_estado'";
+								if(!$result2 = $db->query($sql2)){
+									die('Ha ocurrido un error realizando la consulta ['. $db->error . ']');
+								}
+								while($row2 = $result2->fetch_assoc()){	
+									$estado = $row2['estadoUsuario'];
+								}
+						?>
+							<tr>
+								<th scope="row"><?php echo $documento ?></th>
+								<td><?php echo $nombre ?></td>
+								<td><?php echo $correo ?></td>
+								<td><?php echo $fecha ?></td>
+								<td>
+									<form class="form-inline" action="neg_cambiarEstadoUsuario.php" method="POST" id="permisos" name="permisos">
+										<div class="form-group">
+											<?php echo $estado ?>
+											<input type='hidden' name='estado' value="<?php echo $fk_estado ?>">
+											<input type="hidden" name="documento" value="<?php echo $documento ?>">
+										</div>
+										<?php
+											if($documento != $_SESSION['documento']){
+										?>
+										<button type="submit" class="btn btn-warning"><i class="zmdi zmdi-edit"></i></button>
+										<?php
+											}
+										?>
+									</form>
+								</td>
+								<td>
+									<form action="pre_permisos.php" method="POST" id="permisos" name="permisos">
+										<input type="hidden" name="documento" value="<?php echo $documento ?>">
+										<button type="submit" class="btn btn-secondary">consultar</button>
+									</form>
+								</td>
+							</tr>
+							<?php
+								}
+							?>
+						</tbody>
+						</table>
+					</div>					
+				</div>
+			</div>
+
+			<section id="" class="container">
+
+                
+			
+			</section>
+			
 		</div>
 		<section>
 			<br><hr>

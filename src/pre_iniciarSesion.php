@@ -4,6 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="icon" href="./img/logo/favicon_ngr.ico">
 	<link rel="stylesheet" href="./css/userStyles.css">
 	<link rel="stylesheet" href="./css/bootstrap-material-design.min.css">
 	<script src="./js/jquery-3.1.1.min.js"></script>

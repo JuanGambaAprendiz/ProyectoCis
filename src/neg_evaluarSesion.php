@@ -34,7 +34,7 @@ class Usuario{
 				$_SESSION['usuarioCorreo'] = $usuarioCorreoElectronico;
 				
 				$nPermisos = 0;
-				$sql2="SELECT * FROM permiso WHERE fk_usuarioDocumento='$documento'";
+				$sql2="SELECT * FROM Permiso WHERE fk_usuarioDocumento='$documento'";
 				if (!$result2=$db->query($sql2)){
 					die('Hay un error corriendo en la consulta o datos no encontrados!!! ['.$db->error.']');
 				}
@@ -83,7 +83,7 @@ class Usuario{
 						$id_Rol = $administrador;
 					}
 				}
-				$sql3="SELECT * FROM rol WHERE id_Rol='$id_Rol'";
+				$sql3="SELECT * FROM Rol WHERE id_Rol='$id_Rol'";
 				if (!$result3=$db->query($sql3)){
 					die('Hay un error corriendo en la consulta o datos no encontrados!!! ['.$db->error.']');
 				}

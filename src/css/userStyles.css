@@ -56,7 +56,13 @@ p{
     padding: 15px;
 }
 .login-container{
-	height: 100%;
+    margin: 0 auto;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+	max-width: 700px;
+	
+    
 }
 .logInForm{
     margin: 0 auto;

@@ -9,7 +9,8 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="icon" href="./img/logo/favicon_ngr.ico">
     <link rel="stylesheet" href="./css/main.css">
 	<?php 
 		include("din_headMain.php");
@@ -58,8 +59,8 @@
 			</div>
 		</div>
         <?php 
-            class Datos{
-                public function iniciar($documento){
+            class Permiso{
+                function verificarPermisos($documento){
                     include("neg_conexion.php");
                     $nPermisos = 0;
                     if($documento == true){
@@ -76,7 +77,7 @@
                         $docum = $row['usuarioDocumento']; 
                         $nombre = $row['usuarioNombre'];
                     }
-                    $sql2="SELECT * FROM permiso WHERE fk_usuarioDocumento='$documento'";
+                    $sql2="SELECT * FROM Permiso WHERE fk_usuarioDocumento='$documento'";
                     if (!$result2=$db->query($sql2)){
                         die('Hay un error corriendo en la consulta o datos no encontrados!!! ['.$db->error.']');
                     }
@@ -93,28 +94,42 @@
         <?php 
 			if((isset($_REQUEST['p'])) and ($_REQUEST['p'] == 1)){			
 		?>
-		<div class="alert alert-success alert-dismissible">
-			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>¡Perfecto!</strong> Permiso agregado Correctamente.
-		</div>
+		<div class="container">
+            <div class="alert alert-success alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>¡Perfecto!</strong> Permiso agregado Correctamente.
+            </div>
+        </div>
 		<?php 
 			}
         ?>
         <?php 
 			if((isset($_REQUEST['p'])) and ($_REQUEST['p'] == 2)){			
-		?>
-		<div class="alert alert-success alert-dismissible">
-			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>¡Perfecto!</strong> Se Ha Eliminado El Permiso Correctamente.
-		</div>
+        ?>
+        <div class="container">
+            <div class="alert alert-success alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>¡Perfecto!</strong> Se Ha Eliminado El Permiso Correctamente.
+            </div>
+        </div>
 		<?php 
 			}
 		?>
         <div class="page-header">
 			  <h1 class="text-titles text-center">Permisos del Usuario: <?php echo $nombre; ?></h1>
         </div>
+        <section class="container" style="padding-bottom:2%;">
+            <div class="row">
+                <div class="col-xs-7 col-md-4">
+                    <form action="pre_agregarPermisos.php" method="POST" id="permisos" name="permisos">
+                        <a class="btn btn-link" href="s_indexl_superAdmin.php" title="Inicio-Superadministrador">Volver</a>
+                        <input type="hidden" name="documento" value="<?php echo $documento ?>">
+                        <button type="submit" class="btn btn-primary" title="Agregar Acceso al Módulo de un Rol">Agregar</button>
+                    </form>
+                </div>
+            </div>
+        </section>
         <div class="container table-responsive" style="max-width: 630px;">
-            <a href="s_indexl_superAdmin.php">Volver</a><br><br>
             <table class="table table-hover table-bordered">
             <caption>Lista de los roles que el usuario posee</caption>
             <thead class="">
@@ -134,7 +149,7 @@
                     $id_Rol = $row3['fk_id_Rol'];
                     $id_permiso = $row3['id_Permiso'];
                     
-                    $sql4="SELECT * FROM rol WHERE id_Rol='$id_Rol'";
+                    $sql4="SELECT * FROM Rol WHERE id_Rol='$id_Rol'";
                     if (!$result4=$db->query($sql4)){
                         die('Hay un error corriendo en la consulta o datos no encontrados!!! ['.$db->error.']');
                     }
@@ -164,19 +179,11 @@
             </table>
         </div>
         <br>
-        <div class="container" style="transform: translate(65%, -75%);">
-            <div>
-                <form action="pre_agregarPermisos.php" method="POST" id="permisos" name="permisos">
-                    <input type="hidden" name="documento" value="<?php echo $documento ?>">
-                    <button type="submit" class="btn btn-primary">Agregar</button>
-                </form>
-            </div>
-        </div>
         <?php
                 }
             }
-            $insertar = new Datos();
-            $insertar -> iniciar(isset($_POST["documento"]));                       
+            $permiso = new Permiso();
+            $permiso -> verificarPermisos(isset($_POST["documento"]));                       
         ?>
 		<section>
 			<br><hr>

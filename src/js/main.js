@@ -23,7 +23,7 @@ $(document).ready(function(){
 		  	confirmButtonText: '<i class="zmdi zmdi-check"></i> Salir',
 		  	cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> Cancelar'
 		}).then(function () {
-			window.location.href="index.php";
+			window.location.href="neg_salir.php";
 		});
 	});
 	$('.btn-menu-dashboard').on('click', function(e){

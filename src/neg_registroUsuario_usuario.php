@@ -13,7 +13,7 @@
 			$password = password_hash($password,PASSWORD_DEFAULT);
 
 			include("neg_conexion.php");
-			$sql = "SELECT * FROM Usuario WHERE UsuarioDocumento = '$documento'";
+			$sql = "SELECT * FROM Usuario WHERE usuarioDocumento = '$documento'";
 			if(!$result = $db->query($sql)){
 				die('Error en consulta ['.$db->error. ']');
 			}

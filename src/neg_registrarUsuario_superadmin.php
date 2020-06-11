@@ -12,7 +12,7 @@
 			$password = password_hash($password,PASSWORD_DEFAULT);
 
 			include("neg_conexion.php");
-			$sql = "SELECT * FROM Usuario WHERE UsuarioDocumento = '$documento'";
+			$sql = "SELECT * FROM Usuario WHERE usuarioDocumento = '$documento'";
 			if(!$result = $db->query($sql)){
 				die('Error en consulta ['.$db->error. ']');
 			}
@@ -41,9 +41,6 @@
 					}
 					while($row2 = $result2->fetch_assoc()){
 						$iid_usuarioPermitido= $row2['id_usuarioPermitido'];
-					}
-					if(isset($permitido) && $permitido > 1){
-						$iid_usuarioPermitido+=1;
 					}
 					mysqli_query($db, "INSERT INTO Usuario (usuarioDocumento, fk_id_TipoDocumento, usuarioNombre, usuarioPswrd, usuarioCodigoVerif, usuarioFechaRegistro, usuarioCorreoElectronico, fk_id_EstadoUsuario, fk_id_UsuarioPermitido)
 					 VALUES ('$documento', '$tipoDocumento', '$nombre', '$password', '$codigoVerif','$fechaCol', '$correo','$estado', '$iid_usuarioPermitido')") or die(mysqli_error($db));

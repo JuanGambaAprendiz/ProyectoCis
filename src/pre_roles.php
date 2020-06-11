@@ -7,6 +7,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="icon" href="./img/logo/favicon_ngr.ico">
     <link rel="stylesheet" href="./css/main.css">
 	<?php 
 		include("din_headMain.php");
@@ -57,9 +58,11 @@
         <?php 
 			if((isset($_REQUEST['p'])) and ($_REQUEST['p'] == 1)){			
 		?>
-		<div class="alert alert-success alert-dismissible">
-			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>¡Perfecto!</strong> Rol Agregado Correctamente.
+		<div class="container">
+			<div class="alert alert-success alert-dismissible">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>¡Perfecto!</strong> Rol Agregado Correctamente.
+			</div>
 		</div>
 		<?php 
 			}
@@ -67,9 +70,11 @@
         <?php 
 			if((isset($_REQUEST['p'])) and ($_REQUEST['p'] == 2)){			
 		?>
-		<div class="alert alert-warning alert-dismissible">
-			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>¡Atención!</strong> Se Ha Eliminado El Rol Correctamente.
+		<div class="container">
+			<div class="alert alert-warning alert-dismissible">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>¡Atención!</strong> Se Ha Eliminado El Rol Correctamente.
+			</div>
 		</div>
 		<?php 
 			}
@@ -77,9 +82,11 @@
          <?php 
 			if((isset($_REQUEST['p'])) and ($_REQUEST['p'] == 3)){			
 		?>
-		<div class="alert alert-success alert-dismissible">
-			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>¡Perfecto!</strong> Se Ha Editado El Rol Correctamente.
+		<div class="container">
+			<div class="alert alert-success alert-dismissible">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>¡Perfecto!</strong> Se Ha Editado El Rol Correctamente.
+			</div>
 		</div>
 		<?php 
 			}
@@ -89,9 +96,16 @@
 			  <h1 class="text-titles text-center">Roles del Sistema</h1>
 			</div>
             <center>
+			<section class="container" style="padding-bottom:2%;">
+				<div class="row">
+					<div class="col-xs-7 col-md-4">
+						<a class="btn btn-link" href="s_indexl_superAdmin.php" title="Inicio-Superadministrador">Volver</a>
+					</div>
+				</div>
+			</section>
 			<section id="" class="container">
                 <div class="table-responsive" style="max-width: 630px;">
-                    <table id="example" class="table table-hover table-bordered"
+                    <table id="example" class="table table-hover table-bordered">
                     <caption>Lista de los roles en el sistema</caption>
                     <thead class="">
                         <tr class="warning">

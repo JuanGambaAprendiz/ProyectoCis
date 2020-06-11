@@ -7,6 +7,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="icon" href="./img/logo/favicon_ngr.ico">
     <link rel="stylesheet" href="./css/main.css">
 	<?php 
 		include("din_headMain.php");
@@ -89,6 +90,16 @@
 			  <h1 class="text-titles text-center">Usuarios Permitidos Para Registrarse En El Sistema</h1>
 			</div>
             <center>
+			<section class="container" style="padding-bottom:3%;">
+				<div class="row">
+					<div class="col-xs-7 col-md-4">
+						<a class="btn btn-link" href="s_indexl_superAdmin.php" title="Inicio-Superadministrador">Volver</a>
+						<div class="btn-group" role="group" arial-label="Herarmientas">
+							<a class="btn btn-primary" href="pre_agregarUsuarioPermitido.php" title="Agregar permiso para registrarse">+ Agregar</a>
+						</div>
+					</div>
+				</div>
+			</section>
 			<section id="" class="container">
                 <div class="table-responsive" style="max-width: 630px;">
                     <table id="example" class="table table-hover table-bordered">
@@ -136,9 +147,6 @@
                     </table>
                 </div>
 			</section>
-            <div class="container" style="transform: translate(18.3%, 0); margin-top: 5px;">
-                <a href="pre_agregarUsuarioPermitido.php" class="btn btn-primary">Agregar</a>
-            </div>
 		</div>
         <section>
 			<br><hr>

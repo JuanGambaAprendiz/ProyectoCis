@@ -9,7 +9,10 @@
         <li class="pull-left">
             <a href="#!" class="btn-menu-dashboard" title="Menú"><i class="zmdi zmdi-menu"></i></a>
         </li>
-    </ul>    
+        <li class="pull-left">
+            <a href="s_indexl.php" title="Ir a página de Inicio"><img src="./img/logo/LogoMueblesNGR1.jpg" alt="Muebles NGR" width="100" height="30"></a>
+        </li>
+    </ul>
     <!-- Icono de la cuenta de usuario -->
     <div class="correr fijar" style="margin-right: 10px;">
         <a title="Manual de Usuario" href="./pdf/Manual de Usuario.pdf" target="_blank" class="circulo btn btn-info text-center"><b>?</b></a>
@@ -22,7 +25,7 @@
         <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left fijar" style="min-width: 230px; background-color: #FFF;">
             <center style="margin-bottom: 12px;">
                 <div class="dorpdown-item">
-                    <a href=""><img src="img/perfil/account.png" style="border-radius: 100px;width: 150px;height: 150px; border: black 2px solid; margin-top: 15px; margin-bottom: 5px;"></a>
+                    <a href="s_indexl.php"><img src="img/perfil/account.png" style="border-radius: 100px;width: 150px;height: 150px; border: black 2px solid; margin-top: 15px; margin-bottom: 5px;"></a>
                 </div>
                 <p>
                     <?php

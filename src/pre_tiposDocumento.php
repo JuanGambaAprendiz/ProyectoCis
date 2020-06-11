@@ -7,6 +7,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="icon" href="./img/logo/favicon_ngr.ico">
     <link rel="stylesheet" href="./css/main.css">
 	<?php 
 		include("din_headMain.php");
@@ -24,7 +25,7 @@
 			<div class="full-box dashboard-sideBar-UserInfo">
 				<figure class="full-box">
                     <div class="form-group">
-                        <figcaption class="text-center text-titles mb-2">Tipos de Documento de los Usuarios</figcaption>
+                        <figcaption class="text-center text-titles mb-2">Rol del Usuario</figcaption>
                         <select class="form-control" name="rol" id="rol" onchange="location = this.value">
                             <option hidden value="" title="select" label="" selected disabled>Superadministrador</option>
 							<?php
@@ -93,6 +94,16 @@
 			  <h1 class="text-titles text-center">Tipos de Documento del Sistema</h1>
 			</div>
             <center>
+			<section class="container" style="padding-bottom:3%;">
+				<div class="row">
+					<div class="col-xs-7 col-md-4">
+						<a class="btn btn-link" href="s_indexl_superAdmin.php" title="Inicio-Superadministrador">Volver</a>
+						<div class="btn-group" role="group" arial-label="Herarmientas">
+							<a class="btn btn-primary" href="pre_agregarTipoDocumento.php">+ Nuevo</a>
+						</div>
+					</div>
+				</div>
+			</section>
 			<section id="" class="container">
                 <div class="table-responsive" style="max-width: 630px;">
                     <table id="example" class="table table-hover table-bordered"
@@ -128,13 +139,7 @@
                             <td>
                                 <form action="neg_eliminarTipoDocumento.php" method="POST" id="eliminar" name="elimiar">
                                     <input type="hidden" name="rolNombre" value="<?php echo $tipoDocNombre ?>">
-									<?php
-										if($id_TipoDoc!=1){
-									?>
                                     <button class="btn btn-danger" onclick ="return ConfirmDelete()"><i class="zmdi zmdi-delete"></i></button>
-									<?php
-										}
-									?>
                                 </form>
                             </td>
                         </tr>

@@ -2,14 +2,14 @@
     if($_SESSION['rol'] > 1){
         include('neg_conexion.php');
         $documento=$_SESSION["documento"];
-        $sql="SELECT * FROM permiso WHERE fk_usuarioDocumento='$documento'";
+        $sql="SELECT * FROM Permiso WHERE fk_usuarioDocumento='$documento'";
         if (!$result=$db->query($sql)){
             die('Hay un error corriendo en la consulta o datos no encontrados!!! ['.$db->error.']');
         }
         while ($row=$result->fetch_assoc()){
             $iid_Rol = $row['fk_id_Rol'];
             
-        $sql2="SELECT * FROM rol WHERE id_Rol='$iid_Rol'";
+        $sql2="SELECT * FROM Rol WHERE id_Rol='$iid_Rol'";
         if (!$result2=$db->query($sql2)){
             die('Hay un error corriendo en la consulta o datos no encontrados!!! ['.$db->error.']');
         }

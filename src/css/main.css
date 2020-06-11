@@ -78,7 +78,13 @@ body, html{
 .dashboard-sideBar-ct{
 	width: 270px;
 }
-
+.dashboard-sideBar{
+	left: 0;
+	z-index: 2;
+	background-image: url('../img/fondos/sky.jpg');
+	border-right: 1px solid rgba(255, 255, 255, .7);
+	overflow: hidden;
+}
 .dashboard-sideBar-ct{
 	position: relative;
 	height: 100%;
@@ -294,55 +300,51 @@ body, html{
 .tile-number > small{
 	font-size: 17px;
 }
-/* sideBar */
-.dashboard-sideBar{
-	width: 100%;
-	z-index: 99;
-	background-image: none;
-	background-color: transparent;
-	border-right: none;
-	opacity: 0;
-	pointer-events: none;
-	overflow: hidden;
-}
-.dashboard-sideBar-ct,
-.dashboard-sideBar-bg{
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-.dashboard-sideBar-ct{
-	background-color: #2A2D34;
-	/*background-image: url('../img/fondos/black.jpg');*/
-	border-right: 1px solid rgba(255, 255, 255, .3);
-	z-index: 3;
-	max-width: 270px;
-	width: 100%;
-	transition: all .3s ease-in-out;
-	transform: translateX(-270px);
-}
-.dashboard-sideBar-bg{
-	height: 100%;
-	background-color: rgba(0, 0, 0, .6);
-	z-index: 2;
-}
-.dashboard-contentPage{
-	padding-left: 0;
-}
-.show-sidebar{
-	pointer-events: auto !important;
-	opacity: 1 !important;
-}
-.show-sidebar > .dashboard-sideBar-ct{
-	transform: translateX(0) !important;
-}
+
 /* MEDIA QUERY */
 @media (max-width: 767px){
 	.dashboard-sideBar{
+		width: 100%;
+		z-index: 99;
+		background-image: none;
+		background-color: transparent;
+		border-right: none;
+		opacity: 0;
+		pointer-events: none;
 		overflow: hidden;
 	}
+	.dashboard-sideBar-ct,
+	.dashboard-sideBar-bg{
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	.dashboard-sideBar-ct{
+		background-color: #2A2D34;
+		border-right: 1px solid rgba(255, 255, 255, .3);
+		z-index: 3;
+		max-width: 270px;
+		width: 100%;
+		transition: all .3s ease-in-out;
+		transform: translateX(-270px);
+	}
+	.dashboard-sideBar-bg{
+		height: 100%;
+		background-color: rgba(0, 0, 0, .6);
+		z-index: 2;
+	}
+	.dashboard-contentPage{
+		padding-left: 0;
+	}
+	.show-sidebar{
+		pointer-events: auto !important;
+		opacity: 1 !important;
+	}
+	.show-sidebar > .dashboard-sideBar-ct{
+		transform: translateX(0) !important;
+	}
 }
-@media (max-width: 768px) and (max-width: 991px){
+@media (min-width: 768px) and (max-width: 991px){
 	.hide-sidebar{
 		pointer-events: none;
 		opacity: 0;
@@ -353,7 +355,6 @@ body, html{
 		padding-left: 0;
 	}
 }
-
 @media (min-width: 992px) and (max-width: 1199px){
 	.hide-sidebar{
 		pointer-events: none;

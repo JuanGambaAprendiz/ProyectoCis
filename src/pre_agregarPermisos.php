@@ -7,6 +7,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="icon" href="./img/logo/favicon_ngr.ico">
     <link rel="stylesheet" href="./css/main.css">
 	<?php 
 		include("din_headMain.php");
@@ -62,11 +63,11 @@
             <form action="neg_agregarPermiso.php" method="POST">
                 <select name="rolNombre" id="" class="form-control">
         <?php 
-            class Datos{
-                public function iniciar($documento){
+            class Rol{
+                function imprimirRolesSelector($documento){
                     include("neg_conexion.php");
                     $nPermisos = 0;
-                    $sql = "SELECT * FROM rol";
+                    $sql = "SELECT * FROM Rol";
                     if(!$result = $db->query($sql)){
                         die('Error en consulta ['.$db->error. ']');
                     }
@@ -87,8 +88,8 @@
         <?php
                 }
             }
-            $insertar = new Datos();
-            $insertar -> iniciar($_POST["documento"]);                       
+            $rol = new Rol();
+            $rol -> imprimirRolesSelector($_POST["documento"]);                       
         ?>
             </form>
 		</div>

@@ -1,0 +1,29 @@
+@import url('./bootstrap.css');
+@import url('./ripples.min.css');
+@import url('./sweetalert2.css');
+@import url('./jquery.mCustomScrollbar.css');
+@import url('./material-design-iconic-font.min.css');
+@import url('./theme.css');
+@import url('./dataTables.bootstrap.css');
+@import url('./jquery.dataTables.css');
+@import url('./responsive.bootstrap.css');
+@import url('./select.bootstrap.css');
+@import url('./buttons.bootstrap.css');
+@import url('./buttons.dataTables.css');
+
+body{
+    background-image: url('../img/fondos/prueba2.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+p{
+    color: #fff;
+}
+
+.register-container{
+    background-color: #000000AA;
+    padding: 15px;
+}

@@ -1,10 +1,10 @@
 <?php 
 	session_start();
-	class Datos{
-		public function iniciar($rolNombre){
+	class Rol{
+		public function agregar($rolNombre){
             $contador = 0;
 			include("neg_conexion.php");
-			$sql = "SELECT * FROM rol WHERE rolNombre = '$rolNombre'";
+			$sql = "SELECT * FROM Rol WHERE rolNombre = '$rolNombre'";
 			if(!$result = $db->query($sql)){
 				die('Error en consulta ['.$db->error. ']');
 			}
@@ -15,13 +15,13 @@
 				header('location:pre_agregarRol.php?p=1');
 			}
 			if($contador == 0){
-				mysqli_query($db, "INSERT INTO rol (id_Rol , rolNombre) VALUES (NULL, '$rolNombre')") or die(mysqli_error($db)) ;
+				mysqli_query($db, "INSERT INTO Rol (id_Rol , rolNombre) VALUES (NULL, '$rolNombre')") or die(mysqli_error($db)) ;
 				header("Cache-Control: no-cache, must-revalidate");
 				header('location:pre_roles.php?p=1');
             }	
 		}
 	}
-	$insertar = new Datos();
-	$insertar -> iniciar($_POST["rolNombre"]);
+	$rol = new Rol();
+	$rol -> agregar($_POST["rolNombre"]);
 
  ?>

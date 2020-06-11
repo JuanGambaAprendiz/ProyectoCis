@@ -39,7 +39,7 @@
                 <a href="pre_tiposDocumento.php"><i class="zmdi zmdi-card zmdi-hc-fw"></i> Tipos de Documento</a>
             </li>
             <li>
-                <a href="#"><i class="zmdi zmdi-balance-wallet zmdi-hc-fw"></i> Agregar Tipo de Documento</a>
+                <a href="pre_agregarTipoDocumento.php"><i class="zmdi zmdi-balance-wallet zmdi-hc-fw"></i> Agregar Tipo de Documento</a>
             </li>
         </ul>
     </li>

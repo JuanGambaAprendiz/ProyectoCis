@@ -6,7 +6,8 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="icon" href="./img/logo/favicon_ngr.ico">
     <link rel="stylesheet" href="./css/main.css">
 	<?php 
 		include("din_headMain.php");
@@ -134,7 +135,7 @@
 			  <h1 class="text-titles text-center">Registrar Usuario</h1>
         </div>
         <div class="container" style="max-width: 630px;">
-        <a class="page-link" href="s_indexl_superAdmin.php">Volver</a><br><br>
+        <a class="btn btn-link" href="s_indexl_superAdmin.php" title="Inicio-Superadministrador">Volver</a><br><br>
         <noscript>
             <div class="alert alert-danger">
                 No es posible enviar el formulario sin Javascript. Por favor habilite Javascript en la configuración de su navegador
