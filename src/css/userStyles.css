@@ -1,0 +1,121 @@
+@import url('./bootstrap.css');
+@import url('./ripples.min.css');
+@import url('./sweetalert2.css');
+@import url('./jquery.mCustomScrollbar.css');
+@import url('./material-design-iconic-font.min.css');
+@import url('./theme.css');
+@import url('./dataTables.bootstrap.css');
+@import url('./jquery.dataTables.css');
+@import url('./responsive.bootstrap.css');
+@import url('./select.bootstrap.css');
+@import url('./buttons.bootstrap.css');
+@import url('./buttons.dataTables.css');
+@font-face {
+    font-family: 'RobotoCondensedLight';
+    src: url('../fonts/robotocondensed-light.eot');
+    src: url('../fonts/robotocondensed-light.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/robotocondensed-light.woff2') format('woff2'),
+         url('../fonts/robotocondensed-light.woff') format('woff'),
+         url('../fonts/robotocondensed-light.ttf') format('truetype'),
+         url('../fonts/robotocondensed-light.svg#roboto_condensedlight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'RobotoCondensed';
+    src: url('../fonts/robotocondensed-regular.eot');
+    src: url('../fonts/robotocondensed-regular.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/robotocondensed-regular.woff2') format('woff2'),
+         url('../fonts/robotocondensed-regular.woff') format('woff'),
+         url('../fonts/robotocondensed-regular.ttf') format('truetype'),
+         url('../fonts/robotocondensed-regular.svg#roboto_condensedregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+	font-family: Verdana, serif;
+	font-size: 14px;
+}
+html{
+	scroll-behavior: smooth;
+}
+body{
+    background-image: url('../img/fondos/living-room.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+p{
+    color: #fff;
+}
+
+.register-container{
+    background-color: #000000AA;
+    padding: 15px;
+}
+.login-container{
+	height: 100%;
+}
+.logInForm{
+    margin: 0 auto;
+    justify-content: center;
+    width: 100%;
+	max-width: 350px;
+	min-height: 350px;
+
+    background-color: #000000AA;
+    color: #fff;
+    padding: 15px;
+	border: 1px solid rgba(255,255,255,.3);
+	border-radius: 4px;
+}
+
+.link-decorated:focus{
+    border-bottom: 1px skyblue solid;
+}
+.cafe-oscuro{
+	background-color: #403631;
+}
+.btn-link-access{
+  text-decoration: none;
+  background-color: #403631;
+  color: white;
+}
+.btn-link-access:hover{
+  text-decoration: none;
+  background-color: #403631;
+  color: white;
+}
+.btn-coffee{
+	background-color: #403631;
+	color: white;
+}
+.btn-coffee:hover{
+	background-color: #8C694A;
+	color: white;
+	border: solid 1px white;
+}
+.presentation{
+	background-color: #403631;
+	color: white;
+
+	width: 100%;
+}
+.presentation{
+	min-height: 780px;
+}
+.map-responsive{
+    overflow:hidden;
+    padding-bottom:50%;
+    position:relative;
+    height:0;
+}
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
