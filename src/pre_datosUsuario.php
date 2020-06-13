@@ -90,7 +90,7 @@
             <div class="col-sm-4 col-md-6">
                 <div class="container-fluid">
                     <div class="panel panel-default" style="width: 100%; margin: auto;">
-                        <div class="panel-body bg-primary" style="width: 95%; margin: auto;  margin-top: 15px;">                            
+                        <div class="panel-body bg-success" style="width: 95%; margin: auto;  margin-top: 15px;">                            
                             <center><img src="img/perfil/account.png" class="bg-info" style="border-radius: 100px;width: 150px;height: 150px; border: #fff 2px solid; transform: translate(0%, 60%);"></center>
                         </div>
                         

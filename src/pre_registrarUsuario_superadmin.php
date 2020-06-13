@@ -135,29 +135,29 @@
 			  <h1 class="text-titles text-center">Registrar Usuario</h1>
         </div>
         <div class="container" style="max-width: 630px;">
-        <a class="btn btn-link" href="s_indexl_superAdmin.php" title="Inicio-Superadministrador">Volver</a><br><br>
-        <noscript>
-            <div class="alert alert-danger">
-                No es posible enviar el formulario sin Javascript. Por favor habilite Javascript en la configuración de su navegador
+            <a class="btn btn-link" href="s_indexl_superAdmin.php" title="Inicio-Superadministrador">Volver</a><br><br>
+            <noscript>
+                <div class="alert alert-danger">
+                    No es posible enviar el formulario sin Javascript. Por favor habilite Javascript en la configuración de su navegador
+                </div>
+            </noscript>
+            <?php
+                if(isset($_REQUEST["e"]) && $_REQUEST["e"]==1){
+            ?>
+                <div class="alert alert-danger alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>¡Ups!</strong> El documento indicado ya existe. Está intentando registrar un usuario que ya está registrado.
+                </div>
+            <?php
+                }
+            ?>
+            <div class="alert alert-info alert-dimissible">
+                <strong>El asterisco (*)</strong> indica campos obligatorios
+                <button type="button" class="close overflow-hidden" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-        </noscript>
-        <?php
-            if(isset($_REQUEST["e"]) && $_REQUEST["e"]==1){
-        ?>
-            <div class="alert alert-danger alert-dismissible">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>¡Ups!</strong> El documento indicado ya existe. Está intentando registrar un usuario que ya está registrado.
-            </div>
-        <?php
-            }
-        ?>
-        <div class="alert alert-info alert-dimissible">
-            <strong>El asterisco (*)</strong> indica campos obligatorios
-            <button type="button" class="close overflow-hidden" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <form name="registro_superadmin"  method="POST" action="neg_registrarUsuario_superadmin.php"  class="register-container px-md-5" autocomplete="off">
+            <form name="registro_superadmin"  method="POST" action="neg_registrarUsuario_superadmin.php"  class="register-container px-md-5" autocomplete="off">
                 <div class="form-group label-floating">
                     <label class="control-label my-auto" for="UserNom">Nombre y Apellido*</label>
                     <input class="form-control" id="userNombre" name="nombre" type="text" pattern="[A-Z a-zÑñÁÉÍÓÚÜáéíóúü]{1,50}" 

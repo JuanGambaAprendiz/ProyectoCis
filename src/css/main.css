@@ -81,14 +81,14 @@ body, html{
 .dashboard-sideBar{
 	left: 0;
 	z-index: 2;
-	background-image: url('../img/fondos/sky.jpg');
+	background-image: url('../img/fondos/wood.jpg');
 	border-right: 1px solid rgba(255, 255, 255, .7);
 	overflow: hidden;
 }
 .dashboard-sideBar-ct{
 	position: relative;
 	height: 100%;
-	background-color: rgba(42, 45, 52, 0.7);
+	background-color: rgba(42, 45, 52, 0.5);
 	padding: 0 10px;
 	padding-bottom: 30px;
 }
@@ -163,8 +163,10 @@ body, html{
 	height: 50px;
 	outline: none;
 }
+/* Colores de selección */
 .dashboard-sideBar-Menu > li > a:hover{
-	background-color: #03A9F4;
+	background-color: #291e21;
+	font-weight:bold;
 }
 .dashboard-sideBar-Menu > li > ul{
 	position: relative;
@@ -189,9 +191,12 @@ body, html{
 	border-left: 3px solid transparent;
 	outline: none;
 }
+/* colores de selección */
 .dashboard-sideBar-Menu > li > ul > li > a:hover{
-	border-left: 3px solid #03A9F4;
-	color: #03A9F4;
+	border-left: 3px solid #291e21;
+	background-color: #291e2181;
+	color: #fff;
+	font-weight:bold;
 }
 /* Contenido de la página */
 .dashboard-contentPage{

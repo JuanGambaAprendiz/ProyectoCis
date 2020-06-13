@@ -2,7 +2,7 @@
 <div class="full-box dashboard-sideBar-bg btn-menu-dashboard"></div>
 <div class="full-box dashboard-sideBar-ct">
 	<div class="full-box text-uppercase text-center text-titles dashboard-sideBar-title">
-		Muebles NGR <i class="zmdi zmdi-close btn-menu-dashboard" title="Cerrar el Menú"></i>
+		MENÚ <i class="zmdi zmdi-close btn-menu-dashboard" title="Cerrar el Menú"></i>
 	</div>
 	<?php 
 		if($_SESSION['rol'] > 1){

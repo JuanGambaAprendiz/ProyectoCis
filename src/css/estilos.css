@@ -40,29 +40,29 @@ html{
 	scroll-behavior: smooth;
 }
 .cafe-oscuro{
-	background-color: #403631;
+	background-color: #734136;
 }
 .btn-link-access{
   text-decoration: none;
-  background-color: #403631;
+  background-color: #8C6764;
   color: white;
 }
 .btn-link-access:hover{
   text-decoration: none;
-  background-color: #403631;
+  background-color: rgb(117, 84, 81);
   color: white;
 }
 .btn-coffee{
-	background-color: #403631;
+	background-color: #8C6764;
 	color: white;
 }
 .btn-coffee:hover{
-	background-color: #8C694A;
+	background-color: rgb(117, 84, 81);
 	color: white;
 	border: solid 1px white;
 }
 .presentation{
-	background-color: #403631;
+	background-color: #734136;
 	color: white;
 
 	width: 100%;

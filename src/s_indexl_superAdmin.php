@@ -102,7 +102,7 @@
 			<?php
 				if((isset($_REQUEST['p'])) and ($_REQUEST['p'] == 1)){			
 			?>
-			<div class="container">
+			<div class="">
 				<div class="alert alert-warning alert-dismissible">
 					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 					<strong>¡Atención!</strong> Se Ha Modificado El Estado Del Usuario.
@@ -114,7 +114,7 @@
 			<?php
             	if(isset($_REQUEST["e"]) && $_REQUEST["e"]==1){
         	?>
-			<div class="container">
+			<div class="">
 				<div class="alert alert-success alert-dismissible">
 					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 					<strong>Correcto.</strong> Se ha registrado correctamente el usuario
@@ -123,23 +123,22 @@
         	<?php
             	}
         	?>
-
-			<section class="container" style="padding-bottom:3%;">
-				<div class="row">
-					<div class="col-xs-7 col-md-10">
-						<div class="btn-group" role="group" arial-label="Herarmientas">
-							<a class="btn btn-primary" href="pre_registrarUsuario_superadmin.php"
-							 title="Registrar un usuario &#13;desde el Superadministrador">+ Registrar</a>
-							<a class="btn btn-default" href="pre_usuarioPermitido_superadmin.php" title="Permisos para registrarse">Usuarios Permitidos</a>
-							<a class="btn btn-default" href="pre_roles.php" title="Roles del Sistema">Roles</a>
-							<a class="btn btn-default" href="pre_tiposDocumento.php" title="Tipos de Documento del Sistema">Tipos de Documento</a>
-						</div>
-					</div>
-				</div>
-			</section>
 			
 			<div class="panel panel-default" title="Tabla de los usuarios regístrados en el sistema">				
 				<div class="panel-body">
+
+					<!-- botones -->					
+					<div class="btn-group" role="group" arial-label="Herarmientas">
+						<a class="btn btn-primary" href="pre_registrarUsuario_superadmin.php"
+						title="Registrar un usuario &#13;desde el Superadministrador">+ Registrar</a>
+						<a class="btn btn-default" href="pre_usuarioPermitido_superadmin.php" title="Permisos para registrarse">Usuarios Permitidos</a>
+						<a class="btn btn-default" href="pre_roles.php" title="Roles del Sistema">Roles</a>
+						<a class="btn btn-default" href="pre_tiposDocumento.php" title="Tipos de Documento del Sistema">Tipos de Documento</a>
+					</div>
+					<br>
+					<br>
+
+					<!--- Tabla -->
 					<div class="table-responsive">
 						<table id="example" class="table table-responsive-sm table-hover table-outline mb-0">
 						<caption>Lista de usuarios registrados</caption>

@@ -86,7 +86,18 @@
                     }
                     if($nPermisos == 0){
                         ?>
-                            <p class="text-center">Este Usuario no tiene permisos</p>
+                            <section class="container" style="padding-bottom:2%;">
+                                <div class="row">
+                                    <div class="col-xs-7 col-md-4">
+                                        <form action="pre_agregarPermisos.php" method="POST" id="permisos" name="permisos">
+                                            <a class="btn btn-link" href="s_indexl_superAdmin.php" title="Inicio-Superadministrador">Volver</a>
+                                            <input type="hidden" name="documento" value="<?php echo $documento ?>">
+                                            <button type="submit" class="btn btn-primary" title="Agregar Acceso al Módulo de un Rol">Agregar</button>                                            
+                                        </form>
+                                    </div>
+                                </div>
+                            </section>
+                            <p class="text-center">Este Usuario no tiene permisos</p>                            
                         <?php
                     }
                     if($nPermisos > 0 ){
