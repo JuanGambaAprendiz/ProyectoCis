@@ -1,0 +1,178 @@
+@import url('./bootstrap.css');
+@import url('./booststrap-material-design.min.css');
+@import url('./ripples.min.css');
+@import url('./sweetalert2.css');
+@import url('./jquery.mCustomScrollbar.css');
+@import url('./material-design-iconic-font.min.css');
+@import url('./theme.css');
+
+/* Fuentes */
+@font-face {
+    font-family: 'RobotoCondensedLight';
+    src: url('../fonts/robotocondensed-light.eot');
+    src: url('../fonts/robotocondensed-light.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/robotocondensed-light.woff2') format('woff2'),
+         url('../fonts/robotocondensed-light.woff') format('woff'),
+         url('../fonts/robotocondensed-light.ttf') format('truetype'),
+         url('../fonts/robotocondensed-light.svg#roboto_condensedlight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'RobotoCondensed';
+    src: url('../fonts/robotocondensed-regular.eot');
+    src: url('../fonts/robotocondensed-regular.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/robotocondensed-regular.woff2') format('woff2'),
+         url('../fonts/robotocondensed-regular.woff') format('woff'),
+         url('../fonts/robotocondensed-regular.ttf') format('truetype'),
+         url('../fonts/robotocondensed-regular.svg#roboto_condensedregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+/* Estilos */
+body, html{
+	background-color: #fff;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	font-size: 17px;
+	font-family: 'RobotoCondensed';
+	overflow: hidden;
+}
+.full-box{
+	margin: 0;
+	width: 100%;
+	box-sizing: border-box;
+}
+.cover{
+	background: 50% 50% no-repeat;
+	background-size: cover;
+}
+.text-titles{
+	font-family: 'RobotoCondensedLight'
+}
+.breadcrumb-tabs{
+	margin-bottom: 15px;
+	background-color: transparent;
+	border-bottom: 2px solid #F7F7F7;
+	padding: 0;
+}
+/* Inicio de Sesión */
+.login-container{
+	height: 100%;
+	background-image: url('../img/fondos/prueba2.jpg');
+}
+.logInForm{
+	background-color: #000000AA;
+	position: absolute;
+	color: #fff;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	max-width: 350px;
+	min-height: 350px;
+	padding: 20px;
+	border: 1px solid rgba(255,255,255,.3);
+	border-radius: 4px;
+}
+/* Registrarse */
+.register-container{
+	height: 100%;
+	background-image: url('../img/fondos/prueba2.jpg');
+}
+.registerForm{
+	position: relative;
+	margin-top: 15%;
+	color: #fff;
+	background-color: #000000AA ;
+	border: 1px solid rgba(255,255,255,.3);
+	border-radius: 4px;
+}
+.volver{
+  padding: 10px;
+  background-color: skyblue;
+  margin-left: 0;
+}
+.esp{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+/* MEDIA QUERY */
+@media (max-width: 767px){
+	.dashboard-sideBar{
+		width: 100%;
+		z-index: 99;
+		background-image: none;
+		background-color: transparent;
+		border-right: none;
+		opacity: 0;
+		pointer-events: none;
+		overflow: hidden;
+	}
+	.dashboard-sideBar-ct,
+	.dashboard-sideBar-bg{
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	.dashboard-sideBar-ct{
+		background-color: #2A2D34;
+		border-right: 1px solid rgba(255, 255, 255, .3);
+		z-index: 3;
+		max-width: 270px;
+		width: 100%;
+		transition: all .3s ease-in-out;
+		transform: translateX(-270px);
+	}
+	.dashboard-sideBar-bg{
+		height: 100%;
+		background-color: rgba(0, 0, 0, .6);
+		z-index: 2;
+	}
+	.dashboard-contentPage{
+		padding-left: 0;
+	}
+	.show-sidebar{
+		pointer-events: auto !important;
+		opacity: 1 !important;
+	}
+	.show-sidebar > .dashboard-sideBar-ct{
+		transform: translateX(0) !important;
+	}
+}
+@media (min-width: 768px) and (max-width: 991px){
+	.hide-sidebar{
+		pointer-events: none;
+		opacity: 0;
+		border-right: none;
+		transform: translateX(-270px);
+	}
+	.no-paddin-left{
+		padding-left: 0;
+	}
+}
+@media (min-width: 992px) and (max-width: 1199px){
+	.hide-sidebar{
+		pointer-events: none;
+		opacity: 0;
+		border-right: none;
+		transform: translateX(-270px);
+	}
+	.no-paddin-left{
+		padding-left: 0;
+	}
+}
+@media (min-width: 1200px){
+	.hide-sidebar{
+		pointer-events: none;
+		opacity: 0;
+		border-right: none;
+		transform: translateX(-270px);
+	}
+	.no-paddin-left{
+		padding-left: 0;
+	}
+}
